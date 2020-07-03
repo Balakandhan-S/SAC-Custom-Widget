@@ -83,10 +83,10 @@ var data_ready = pie(d3.entries(data));
 
 // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
 svg
-  .selectAll()
+  .selectAll(".pat")
   .data(data_ready)
   .enter()
-  .append('path')
+  .append('path').attr("class", "pat")
   .attr('d', d3.arc()
     .innerRadius(0)
     .outerRadius(radius)
