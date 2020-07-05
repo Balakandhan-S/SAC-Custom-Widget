@@ -1,7 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <div id="my_dataviz"></div>
+        <svg id="canvas"></svg>
     `;
 
     customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -61,8 +61,8 @@ var width = 450,
 var radius = Math.min(width, height) / 2 - margin;
 
 // append the svg object to the div called 'my_dataviz'
-var svg = d3.select("#my_dataviz")
-  .append("svg")
+var svg = d3.select("#canvas")
+  //.append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
