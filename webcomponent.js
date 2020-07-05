@@ -1,7 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <svg id="canvas"></svg>
+        <svg id="canvas" width=100% height=100% ></svg>
     `;
 
     customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
