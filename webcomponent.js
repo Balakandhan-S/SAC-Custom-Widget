@@ -1,10 +1,9 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <svg id="canvas" width=100% height=100% ></svg>
     `;
 
-    customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
+    customElements.define('com-sap-sample-helloworld5', class HelloWorld extends HTMLElement {
 
 
 		constructor() {
@@ -12,12 +11,21 @@
 			this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this._firstConnection = false;
+            this._tagContainer;
+            this._tagType = "h1";
+            this._tagText = "Hello World";
+
+            //Adding event handler for click events
+			this.addEventListener("click", event => {
+				var event = new Event("onClick");
+				this.dispatchEvent(event);
+            });
 		}
 
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
             this._firstConnection = true;
-            this.redraw();
+            this.redraw(); 
         }
 
          //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
@@ -39,62 +47,52 @@
         
         //When the custom widget is removed from the canvas or the analytic application is closed
         onCustomWidgetDestroy(){
+        
         }
 
         
         //When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
-        // Commented out by default.  If it is enabled, SAP Analytics Cloud will track DOM size changes and call this callback as needed
-        //  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
+        // Commented out by default
         /*
         onCustomWidgetResize(width, height){
-            redraw()
+        
         }
         */
 
-        redraw(){
-	// set the dimensions and margins of the graph
-var width = 450,
-    height = 450,
-    margin = 40;
-
-// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-var radius = Math.min(width, height) / 2 - margin;
-
-// append the svg object to the div called 'my_dataviz'
-var svg = d3.select("#canvas")
-  //.append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-// Create dummy data
-var data = {a: 9, b: 20, c:30, d:8, e:12};
-
-// set the color scale
-var color = d3.scaleOrdinal()
-  .domain(data)
-  .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"]);
-
-// Compute the position of each group on the pie:
-var pie = d3.pie()
-  .value(function(d) {return d.value; });
-var data_ready = pie(d3.entries(data));
-
-// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-svg
-  .selectAll(".pat")
-  .data(data_ready)
-  .enter()
-  .append('path').attr("class", "pat")
-  .attr('d', d3.arc()
-    .innerRadius(0)
-    .outerRadius(radius)
-  )
-  .attr('fill', function(d){ return(color(d.data.key)) })
-  .attr("stroke", "black")
-  .style("stroke-width", "2px")
-  .style("opacity", 0.7);
+        //Getters and Setters
+        get widgetText() {
+            return this._tagType;
         }
+
+        set widgetText(value) {
+            this._tagText = value;
+        }
+
+
+        get headingType() {
+            return this._tagType;
+            }
+
+        set headingType(value) {
+            this._tagType = value;
+        }
+
+        // End - Getters and Setters
+
+        redraw(){
+            if (this._tagContainer){
+                this._tagContainer.parentNode.removeChild(this._tagContainer);
+            }
+
+            var shadow = window.getSelection(this._shadowRoot);
+            this._tagContainer = document.createElement(this._tagType);
+            var theText = document.createTextNode(this._tagText);    
+            this._tagContainer.appendChild(theText); 
+            this._shadowRoot.appendChild(this._tagContainer);
+
+        }
+    
+    
     });
+        
 })();
