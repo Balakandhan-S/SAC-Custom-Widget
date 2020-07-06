@@ -52,7 +52,8 @@
         */
 
         redraw(){
-		d3.select("#mydiv").append("p").text("Third paragraph.");
+		var a = d3.select("#mydiv");
+		a.append("p").text("ecece");
         }
     });
 })();
