@@ -433,5 +433,5 @@
    return this;
   }
  }
- customElements.define("com-gmail-cse-ari007-d3forcebubble", FBUBBLE);
+ customElements.define("d3forcebubble-main", FBUBBLE);
 })();
