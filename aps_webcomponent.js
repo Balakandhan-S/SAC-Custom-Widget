@@ -64,5 +64,5 @@
    return this._shadowRoot.getElementById("sps_showAvg").checked;
   }
  }
- customElements.define("com-gmail-cse-ari007-d3forcebubble-sps", FBUBBLE_Sps);
+ customElements.define("d3forcebubble-sps", FBUBBLE_Sps);
 })();
