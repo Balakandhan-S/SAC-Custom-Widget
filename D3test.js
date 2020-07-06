@@ -1,8 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-	<script src='https://d3js.org/d3.v4.js'></script>
-        <div id="mydiv">Hello</div>
+	<div id="mydiv">Hello</div>
     `;
 
     customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -13,29 +12,15 @@
 			this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this._firstConnection = false;
+			var script = document.createElement("script");
+			script.setAttribute("type", "text/javascript");
+			script.setAttribute("src", "https://d3js.org/d3.v4.js");
+			document.getElementsByTagName("head")[0].appendChild(script);
 		}
 
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
-             var shadow = this.shadowRoot;
-   var custelem = shadow.host;
-   this.$width = custelem.parentNode.parentNode.parentNode.style.width;
-   this.$height = custelem.parentNode.parentNode.parentNode.style.height;
-   let LoadLibs = async function(host, data, props) {
-    try {
-     await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
-     await host.loadScript("https://d3js.org/d3-force.v1.min.js", shadow);
-     await host.loadScript("https://d3js.org/d3-scale.v1.min.js", shadow);
-     await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js", shadow);
-    } catch (e) {
-     console.log(JSON.stringify(e));
-    } finally {
-     host.drawChart(data, props);
-    }
-   };
-   LoadLibs(this, this.$data, this._props);
-   this._init = false;
-		this._firstConnection = true;
+         	this._firstConnection = true;
             this.redraw();
 		
         }
