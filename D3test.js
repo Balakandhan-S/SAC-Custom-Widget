@@ -64,6 +64,10 @@
         */
 
         redraw(){
+		var script = document.createElement("script");
+			script.setAttribute("type", "text/javascript");
+			script.setAttribute("src", "https://d3js.org/d3.v4.js");
+			document.getElementsByTagName("head")[0].appendChild(script);
 		var a = d3.select("#mydiv");
 		a.append("p").text("ecece");
         }
