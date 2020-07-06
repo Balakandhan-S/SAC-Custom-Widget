@@ -80,5 +80,5 @@
    return this._shadowRoot.getElementById("bps_colorDecimal").value;
   }
  }
- customElements.define("com-gmail-cse-ari007-d3forcebubble-bps", FBUBBLE_Bps);
+ customElements.define("d3forcebubble-bps", FBUBBLE_Bps);
 })();
