@@ -17,10 +17,27 @@
 
         //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
-            this._firstConnection = true;
+             var shadow = this.shadowRoot;
+   var custelem = shadow.host;
+   this.$width = custelem.parentNode.parentNode.parentNode.style.width;
+   this.$height = custelem.parentNode.parentNode.parentNode.style.height;
+   let LoadLibs = async function(host, data, props) {
+    try {
+     await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
+     await host.loadScript("https://d3js.org/d3-force.v1.min.js", shadow);
+     await host.loadScript("https://d3js.org/d3-scale.v1.min.js", shadow);
+     await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js", shadow);
+    } catch (e) {
+     console.log(JSON.stringify(e));
+    } finally {
+     host.drawChart(data, props);
+    }
+   };
+   LoadLibs(this, this.$data, this._props);
+   this._init = false;
+		this._firstConnection = true;
             this.redraw();
-		var a = d3.select("#mydiv");
-		a.append("p").text("ecece");
+		
         }
 
          //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
