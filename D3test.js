@@ -1,7 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <div id="mydiv" height="100px">Hello World</div>
+        <div id="mydiv">Hello World</div>
     `;
 
     customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -52,6 +52,7 @@
         */
 
         redraw(){
+		d3.select("#mydiv").append("p").text("Third paragraph.");
         }
     });
 })();
