@@ -18,6 +18,8 @@
         connectedCallback(){
             this._firstConnection = true;
             this.redraw();
+		var a = d3.select("#mydiv");
+		a.append("p").text("ecece");
         }
 
          //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
