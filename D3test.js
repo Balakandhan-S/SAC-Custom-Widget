@@ -1,6 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<div id="mydiv">Hello</div>
     `;
 
@@ -54,17 +55,10 @@
         */
 
         redraw(){
-		import d3 from "https://d3js.org/d3.v5.min.js";
+		
 		var a = d3.select("#mydiv");
 		a.append("p").text("ecece");
-		/*import('https://d3js.org/d3.v5.min.js')
-  .then((module) => {
-    // Do something with the module.
-			
-		var a = d3.select("#mydiv");
-		a.append("p").text("ecece");
-  });*/
-
+		
         }
     });
 })();
