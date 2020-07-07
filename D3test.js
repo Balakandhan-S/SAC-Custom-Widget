@@ -22,11 +22,7 @@
         connectedCallback(){
          	this._firstConnection = true;
             this.redraw();
-		var script = document.createElement("script");
-			script.setAttribute("type", "text/javascript");
-			script.setAttribute("src", "https://d3js.org/d3.v4.js");
-			document.getElementsByTagName("head")[0].appendChild(script);
-        }
+	}
 
          //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
         disconnectedCallback(){
@@ -43,10 +39,7 @@
             if (this._firstConnection){
                 this.redraw();
             }
-			var script = document.createElement("script");
-			script.setAttribute("type", "text/javascript");
-			script.setAttribute("src", "https://d3js.org/d3.v4.js");
-			document.getElementsByTagName("head")[0].appendChild(script);
+			
         }
         
         //When the custom widget is removed from the canvas or the analytic application is closed
@@ -64,10 +57,7 @@
         */
 
         redraw(){
-		var script = document.createElement("script");
-			script.setAttribute("type", "text/javascript");
-			script.setAttribute("src", "https://d3js.org/d3.v4.js");
-			document.getElementsByTagName("head")[0].appendChild(script);
+		import d3 from "https://d3js.org/d3.v5.min.js"
 		var a = d3.select("#mydiv");
 		a.append("p").text("ecece");
         }
