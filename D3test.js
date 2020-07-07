@@ -12,10 +12,7 @@
 			this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this._firstConnection = false;
-			var script = document.createElement("script");
-			script.setAttribute("type", "text/javascript");
-			script.setAttribute("src", "https://d3js.org/d3.v4.js");
-			document.getElementsByTagName("head")[0].appendChild(script);
+		
 		}
 
         //Fired when the widget is added to the html DOM of the page
