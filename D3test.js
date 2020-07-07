@@ -54,7 +54,7 @@
         */
 
         redraw(){
-		import d3 from "https://d3js.org/d3.v5.min.js"
+		import d3 from "https://d3js.org/d3.v5.min.js";
 		var a = d3.select("#mydiv");
 		a.append("p").text("ecece");
 		/*import('https://d3js.org/d3.v5.min.js')
