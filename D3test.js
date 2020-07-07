@@ -1,7 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<div id="mydiv">Hello</div>
     `;
 
