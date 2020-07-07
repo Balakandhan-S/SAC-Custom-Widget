@@ -1,6 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
+	<script data-main = "main" src = "require.js"></script>
 	<div id="mydiv">Hello</div>
     `;
 
