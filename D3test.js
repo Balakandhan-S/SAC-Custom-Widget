@@ -1,7 +1,6 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<div id="mydiv">Hello</div>
     `;
 
@@ -55,10 +54,11 @@
         */
 
         redraw(){
-		
-		var a = d3.select("#mydiv");
-		a.append("p").text("ecece");
-		
+		require(['https://d3js.org/d3.v4.min.js'], function(){
+			var a = d3.select("#mydiv");
+			a.append("p").text("ecece");
+		});
+				
         }
     });
 })();
