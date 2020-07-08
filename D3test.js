@@ -20,20 +20,7 @@
   //Fired when the widget is added to the html DOM of the page
   connectedCallback() {
    this._firstConnection = true;
-      let LoadLibs = async function(host, data, props) {
-    try {
-     await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
-     await host.loadScript("https://d3js.org/d3-force.v1.min.js", shadow);
-     await host.loadScript("https://d3js.org/d3-scale.v1.min.js", shadow);
-     await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js", shadow);
-    } catch (e) {
-     console.log(JSON.stringify(e));
-    } finally {
-     host.redraw();
-    }
-   };
-   LoadLibs(this, this.$data, this._props);
-   this._init = false;
+      
   }
    
 
@@ -50,20 +37,7 @@
   //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
   onCustomWidgetAfterUpdate(oChangedProperties) {
    if (this._firstConnection) {
-
-    let LoadLibsAfterUpdate = async function(host, data, props) {
-     try {
-      await host.loadScript("https://d3js.org/d3.v4.min.js", shadow);
-      await host.loadScript("https://d3js.org/d3-force.v1.min.js", shadow);
-      await host.loadScript("https://d3js.org/d3-scale.v1.min.js", shadow);
-      await host.loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js", shadow);
-     } catch (e) {
-      console.log(JSON.stringify(e));
-     } finally {
-      host.redraw();
-     }
-    };
-   
+	redraw();
    }
 
   }
@@ -82,8 +56,25 @@
   */
 
   redraw() {
-    var a = d3.select("#mydiv");
-    a.append("p").text("ecece");
+	console.log("redraw");  
+	  loadScript('https://d3js.org/d3.v5.min.js', function() {
+  // the callback runs after the script is loaded
+   var a = d3.select("#mydiv");
+    a.append("p").text("ecece");// so now it works
+  
+});
+   
   }
+	 
+function loadScript(src, callback) {
+	
+	console.log("...loadscript");
+  let script = document.createElement('script');
+  script.src = src;
+
+  script.onload = () => callback(script);
+
+  document.head.append(script);
+}	 
  });
 })();
