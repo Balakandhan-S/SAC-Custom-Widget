@@ -65,7 +65,8 @@
 	    	console.log("tag appended...");
 	    script.onload = () => {
 		    console.log("script loaded...");
-			d3.select("body").append("p").text("ecece");
+			d3.select("#mydiv").attr("style","font-size:60px");
+			d3.select("#mydiv").append("p").text("ecece");
 		    console.log("end");
 		};
 	  
