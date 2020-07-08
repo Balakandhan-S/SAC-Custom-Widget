@@ -14,7 +14,16 @@
    });
    this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
    this._firstConnection = false;
-
+	  let script = document.createElement('script');
+	   script.src = 'https://d3js.org/d3.v5.min.js';
+	  script.charset='utf-8'
+	  script.type='text/javascript'
+	  document.head.append(script);
+	    	console.log("tag appended...");
+	    script.onload = () => {
+		    console.log("script loaded...");
+			this.redraw();
+		};
   }
 
   //Fired when the widget is added to the html DOM of the page
@@ -57,19 +66,9 @@
 
   redraw() {
 	console.log("redraw...");  
-	  let script = document.createElement('script');
-	   script.src = 'https://d3js.org/d3.v5.min.js';
-	  script.charset='utf-8'
-	  script.type='text/javascript'
-	  document.head.append(script);
-	    	console.log("tag appended...");
-	    script.onload = () => {
-		    console.log("script loaded...");
-			d3.select("#mydiv").attr("style","font-size:60px");
+	  d3.select("#mydiv").attr("style","font-size:60px");
 			d3.select("#mydiv").append("p").text("ecece");
 		    console.log("end");
-		};
-	  
       
   }
  
