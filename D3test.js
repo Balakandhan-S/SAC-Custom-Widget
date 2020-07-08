@@ -66,7 +66,7 @@
 
   redraw() {
 	console.log("redraw...");  
-	  d3.select("#__widget0").append("p").text("dxyxyrer");
+	  d3.select(".sapLumiraStoryLayoutCommonEditPanel").append("p").text("dxyxyrer");
 	    console.log("end");
       
   }
