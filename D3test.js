@@ -63,14 +63,7 @@
       host.redraw();
      }
     };
-    if (!(this._init || this._selectionEvent)) {
-     if (this._firstUpdate) {
-      LoadLibsAfterUpdate(this, this.$data, this._props);
-      this._firstUpdate = false;
-     } else {
-      this.(this.$data, this._props);
-     }
-    }
+   
    }
 
   }
