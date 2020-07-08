@@ -58,7 +58,7 @@
   redraw() {
 	console.log("redraw...");  
 	  let script = document.createElement('script');
-	   script.src = 'https://d3js.org/d3.v4.min.js';
+	   script.src = 'https://d3js.org/d3.v4.js';
 	   document.head.append(script);
 	  	console.log("tag appended...");
 	    script.onload = () => {
