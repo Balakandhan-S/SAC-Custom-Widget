@@ -66,7 +66,7 @@
 
   redraw() {
 	console.log("redraw...");  
-	  d3.select("#__widget0").append("p").text("dxyxyrer").attr("style","font-size:60px");
+	  d3.select("#__widget0").append("p").text("dxyxyrer");
 	    console.log("end");
       
   }
