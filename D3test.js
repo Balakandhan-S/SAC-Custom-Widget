@@ -58,7 +58,7 @@
   redraw() {
 	console.log("redraw...");  
 	  let script = document.createElement('script');
-	   script.src = 'https://d3js.org/d3.v4.js';
+	   script.src = 'https://d3js.org/d3.v5.min.js';
 	  script.charset='utf-8'
 	  script.type='text/javascript'
 	  document.head.append(script);
