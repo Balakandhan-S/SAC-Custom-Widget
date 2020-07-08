@@ -60,6 +60,7 @@
 	  let script = document.createElement('script');
 	   script.src = 'https://d3js.org/d3.v4.js';
 	  script.charset='UTF-8'
+	  script.type='text/javascript'
 	  document.head.append(script);
 	    	console.log("tag appended...");
 	    script.onload = () => {
