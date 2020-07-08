@@ -56,13 +56,16 @@
   */
 
   redraw() {
-	console.log("redraw");  
+	console.log("redraw...");  
 	  let script = document.createElement('script');
 	   script.src = 'https://d3js.org/d3.v4.min.js';
 	   document.head.append(script);
+	  	console.log("tag appended...");
 	    script.onload = () => {
+		    console.log("script loaded..."):
 			var a = d3.select("#mydiv");
 			a.append("p").text("ecece");
+		    console.log("end");
 		};
       
   }
