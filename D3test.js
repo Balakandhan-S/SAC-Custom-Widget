@@ -29,14 +29,13 @@
     } catch (e) {
      console.log(JSON.stringify(e));
     } finally {
-     host.redraw();;
+     host.redraw();
     }
    };
    LoadLibs(this, this.$data, this._props);
    this._init = false;
   }
    
-  }
 
   //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
   disconnectedCallback() {
