@@ -1,7 +1,6 @@
 (function() {
  let tmpl = document.createElement('template');
  tmpl.innerHTML = `
-	<script data-main = "main" src = "require.js"></script>
 	<div id="mydiv">Hello</div>
     `;
 
@@ -91,11 +90,8 @@
   */
 
   redraw() {
-   require(['https://d3js.org/d3.v4.min.js'], function() {
     var a = d3.select("#mydiv");
     a.append("p").text("ecece");
-   });
-
   }
  });
 })();
