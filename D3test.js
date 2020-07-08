@@ -4,7 +4,7 @@
 	<div id="mydiv">Hello</div>
     `;
 
- customElements.define('com-sap-sample-D3test', class D3test1 extends HTMLElement {
+ customElements.define('com-sap-sample-d3test', class D3test1 extends HTMLElement {
 
 
   constructor() {
