@@ -20,7 +20,7 @@
   //Fired when the widget is added to the html DOM of the page
   connectedCallback() {
    this._firstConnection = true;
-      
+      redraw();
   }
    
 
