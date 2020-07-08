@@ -62,7 +62,7 @@
 	   document.head.append(script);
 	  	console.log("tag appended...");
 	    script.onload = () => {
-		    console.log("script loaded..."):
+		    console.log("script loaded...");
 			var a = d3.select("#mydiv");
 			a.append("p").text("ecece");
 		    console.log("end");
