@@ -63,7 +63,7 @@
 	  	console.log("tag appended...");
 	    script.onload = () => {
 		    console.log("script loaded...");
-			d3.select("#mydiv").append("p").text("ecece");
+			d3.select("body").append("p").text("ecece");
 		    console.log("end");
 		};
       
