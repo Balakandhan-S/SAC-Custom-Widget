@@ -1,7 +1,7 @@
 (function() {
  let tmpl = document.createElement('template');
  tmpl.innerHTML = `
-	<div id="mydiv">Hello</div>
+	
     `;
 
  customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -14,7 +14,13 @@
    });
    this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
    this._firstConnection = false;
-	  let script = document.createElement('script');
+	 
+  }
+
+  //Fired when the widget is added to the html DOM of the page
+  connectedCallback() {
+   this._firstConnection = true;
+       let script = document.createElement('script');
 	   script.src = 'https://d3js.org/d3.v5.min.js';
 	  script.charset='utf-8'
 	  script.type='text/javascript'
@@ -24,12 +30,6 @@
 		    console.log("script loaded...");
 			this.redraw();
 		};
-  }
-
-  //Fired when the widget is added to the html DOM of the page
-  connectedCallback() {
-   this._firstConnection = true;
-      this.redraw();
   }
    
 
@@ -66,9 +66,8 @@
 
   redraw() {
 	console.log("redraw...");  
-	  d3.select("#mydiv").attr("style","font-size:60px");
-			d3.select("#mydiv").append("p").text("ecece");
-		    console.log("end");
+	  d3.select("#__widget0").append("p").text("dxyxyrer").attr("style","font-size:60px");
+	    console.log("end");
       
   }
  
