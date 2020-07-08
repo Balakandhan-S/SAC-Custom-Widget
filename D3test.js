@@ -59,13 +59,15 @@
 	console.log("redraw...");  
 	  let script = document.createElement('script');
 	   script.src = 'https://d3js.org/d3.v4.js';
+	  script.charset='UTF-8'
+	  document.head.append(script);
 	    	console.log("tag appended...");
 	    script.onload = () => {
 		    console.log("script loaded...");
 			d3.select("body").append("p").text("ecece");
 		    console.log("end");
 		};
-	  document.head.append(script);
+	  
       
   }
  
