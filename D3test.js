@@ -1,46 +1,3 @@
-(function() {
- let tmpl = document.createElement('template');
- tmpl.innerHTML = `
-	<div id="mydiv">Hello</div>
-    `;
-
- customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
-
-
-  constructor() {
-   super();
-   this._shadowRoot = this.attachShadow({
-    mode: "open"
-   });
-   this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-   this._firstConnection = false;
-
-  }
-
-  //Fired when the widget is added to the html DOM of the page
-  connectedCallback() {
-   this._firstConnection = true;
-      
-  }
-   
-
-  //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
-  disconnectedCallback() {
-
-  }
-
-  //When the custom widget is updated, the Custom Widget SDK framework executes this function first
-  onCustomWidgetBeforeUpdate(oChangedProperties) {
-
-  }
-
-  //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
-  onCustomWidgetAfterUpdate(oChangedProperties) {
-   if (this._firstConnection) {
-	redraw();
-   }
-
-  }
 
   //When the custom widget is removed from the canvas or the analytic application is closed
   onCustomWidgetDestroy() {}
@@ -57,24 +14,15 @@
 
   redraw() {
 	console.log("redraw");  
-	  loadScript('https://d3js.org/d3.v5.min.js', function() {
-  // the callback runs after the script is loaded
-   var a = d3.select("#mydiv");
-    a.append("p").text("ecece");// so now it works
-  
-});
-   
+	  let script = document.createElement('script');
+	   script.src = 'https://d3js.org/d3.v4.min.js';
+	   document.head.append(script);
+	    script.onload = () => {
+			var a = d3.select("#mydiv");
+			a.append("p").text("ecece");
+		};
+      
   }
-	 
-function loadScript(src, callback) {
-	
-	console.log("...loadscript");
-  let script = document.createElement('script');
-  script.src = src;
-
-  script.onload = () => callback(script);
-
-  document.head.append(script);
-}	 
+ 
  });
 })();
