@@ -1,7 +1,9 @@
 (function() {
  let tmpl = document.createElement('template');
  tmpl.innerHTML = `
+	<svg>
 	<circle cx="25" cy="25" r="25" fill="purple" />
+	</svg>
     `;
 
  customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
