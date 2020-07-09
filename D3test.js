@@ -1,9 +1,7 @@
 (function() {
  let tmpl = document.createElement('template');
  tmpl.innerHTML = `
-	<svg id="sid" width="300" height="300">
-		<circle cx="25" cy="25" r="25" fill="purple" />
-        </svg>
+	<circle cx="25" cy="25" r="25" fill="purple" />
     `;
 
  customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -59,7 +57,7 @@
   //  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
   
   onCustomWidgetResize(width, height){
-      redraw()
+      console.log(width+"   "+height);
   }
   
 
