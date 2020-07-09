@@ -1,7 +1,8 @@
 (function() {
  let tmpl = document.createElement('template');
  tmpl.innerHTML = `
-	
+	<svg id="sid" width="300" height="300">
+        </svg>
     `;
 
  customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
@@ -9,18 +10,10 @@
 
   constructor() {
    super();
-   this._shadowRoot = this.attachShadow({
-    mode: "open"
-   });
+   this._shadowRoot = this.attachShadow({mode: "open"});
    this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-   this._firstConnection = false;
-	 
-  }
-
-  //Fired when the widget is added to the html DOM of the page
-  connectedCallback() {
-   this._firstConnection = true;
-       let script = document.createElement('script');
+	  
+  let script = document.createElement('script');
 	   script.src = 'https://d3js.org/d3.v5.min.js';
 	  script.charset='utf-8'
 	  script.type='text/javascript'
@@ -28,8 +21,13 @@
 	    	console.log("tag appended...");
 	    script.onload = () => {
 		    console.log("script loaded...");
-			this.redraw();
-		};
+	};
+	 
+  }
+
+  //Fired when the widget is added to the html DOM of the page
+  connectedCallback() {
+	  this.redraw();
   }
    
 
@@ -66,8 +64,8 @@
 
   redraw() {
 	console.log("redraw...");  
-	  d3.select(".sapLumiraStoryLayoutCommonEditPanel").append("p").text("dxyxyrer");
-	    console.log("end");
+	 d3.select(this._shadowRoot).select("circle").attr("fill","green");
+	 console.log("end");
       
   }
  
