@@ -5,7 +5,7 @@
 	<circle cx="25" cy="25" r="25" fill="purple" />
 	</svg>
     `;
-
+	let script = document.createElement('script');
  customElements.define('com-sap-sample-helloworld1', class HelloWorld1 extends HTMLElement {
 
 
@@ -14,16 +14,12 @@
    this._shadowRoot = this.attachShadow({mode: "open"});
    this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
 	  
-  let script = document.createElement('script');
+  
 	   script.src = 'https://d3js.org/d3.v5.min.js';
 	  script.charset='utf-8'
 	  script.type='text/javascript'
 	  document.head.append(script);
-	    	console.log("tag appended...");
-	    script.onload = () => {
-		    console.log("script loaded...");
-	};
-	 
+	    	console.log("tag appended...");	 
   }
 
   //Fired when the widget is added to the html DOM of the page
@@ -45,7 +41,11 @@
   //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
   onCustomWidgetAfterUpdate(oChangedProperties) {
    if (this._firstConnection) {
-	this.redraw();
+	 script.onload = () => {
+		    console.log("script loaded...");
+		  this.redraw();
+	};
+	  
    }
 
   }
@@ -64,6 +64,7 @@
   
 
   redraw() {
+	  
 	console.log("redraw...");  
 	 d3.select(this._shadowRoot).select("circle").attr("fill","green");
 	 console.log("end");
