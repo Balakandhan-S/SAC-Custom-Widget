@@ -2,6 +2,7 @@
  let tmpl = document.createElement('template');
  tmpl.innerHTML = `
 	<svg id="sid" width="300" height="300">
+		<circle cx="25" cy="25" r="25" fill="purple" />
         </svg>
     `;
 
