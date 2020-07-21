@@ -32,7 +32,7 @@
 	    		console.log("tag appended...");	 
 			script.onload = () => {
 		    		console.log("script loaded...");
-				var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
+				d3.select(this.shadowRoot).append("svg");
 				this.redraw();
 			};
 			this._domAttached = true;
