@@ -130,7 +130,7 @@
 			})
 			.attr("width", xScale.bandwidth())
 			.attr("height", function(d) {
-				return height - yScale(d.value);
+				return this._height - yScale(d.value);
 			})
 			.on("mouseover", function() {
 				d3.select(this)
