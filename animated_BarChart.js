@@ -1,7 +1,6 @@
 (function() {
 	const template = document.createElement('template');
 	template.innerHTML = `
-		<div>Custom Element</div>
 		<svg id="canvas"></svg>
 	`;
 	let width = 400,
