@@ -131,7 +131,7 @@
 			.attr("width", xScale.bandwidth())
 			.attr("height", function(d) {
 				let hght = (this._height - yScale(d.value));
-				console.log(hght+" and "+this._height - yScale(d.value));
+				console.log(this._height+" and "+yScale(d.value));
 				return hght;
 			})
 			.on("mouseover", function() {
