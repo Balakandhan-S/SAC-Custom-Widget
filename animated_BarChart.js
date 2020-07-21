@@ -71,13 +71,13 @@
 		redraw() {
 	  
 			console.log("redraw...");  
-			var svg = d3.select(this.shadowRoot).append("svg").attr("width", this._width + this._margin).attr("height", this._height + this._margin);
+			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
+			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
+			var xScale = d3.scaleBand().range([0, svgWidth]).padding(0.4),
+			yScale = d3.scaleLinear().range([svgHeight, 0]);
 			
-			var xScale = d3.scaleBand().range([0, this._width]).padding(0.4),
-			yScale = d3.scaleLinear().range([this._height, 0]);
-
-			var g = svg.append("g").attr("transform", "translate(" + this._margin/2 + "," + this._margin/2 + ")");
-			console.log(this._width+" "+this._height+" "+this._margin/2);
+			var g = svg.append("g").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
+			console.log(svgWidth+" "+svgHeight+" "+svgMargin/2);
 			var data = [{
 				"year": 2011,
 				"value": 45
@@ -110,7 +110,7 @@
 				return d.value;
 			})]);
 
-			g.append("g").attr("transform", "translate(0," + this._height + ")").call(d3.axisBottom(xScale));
+			g.append("g").attr("transform", "translate(0," + svgHeight + ")").call(d3.axisBottom(xScale));
 
 			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
 				return "$" + d;
@@ -130,8 +130,8 @@
 			})
 			.attr("width", xScale.bandwidth())
 			.attr("height", function(d) {
-				let hght = (this._height - yScale(d.value));
-				console.log(this._height+" and "+yScale(d.value));
+				let hght = (svgHeight - yScale(d.value));
+				console.log(svgHeight+" and "+yScale(d.value));
 				return hght;
 			})
 			.on("mouseover", function() {
