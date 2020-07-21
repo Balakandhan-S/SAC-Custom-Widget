@@ -32,6 +32,7 @@
 	    		console.log("tag appended...");	 
 			script.onload = () => {
 		    		console.log("script loaded...");
+				var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
 				this.redraw();
 			};
 			this._domAttached = true;
@@ -72,7 +73,7 @@
 	  
 			console.log("redraw...");  
 			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
-			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
+			var svg = d3.select(this.shadowRoot).select("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
 			var xScale = d3.scaleBand().range([0, svgWidth]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight, 0]);
 			
@@ -131,7 +132,6 @@
 			.attr("width", xScale.bandwidth())
 			.attr("height", function(d) {
 				let hght = (svgHeight - yScale(d.value));
-				console.log(svgHeight+" and "+yScale(d.value));
 				return hght;
 			})
 			.on("mouseover", function() {
