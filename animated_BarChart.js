@@ -2,10 +2,7 @@
 	const template = document.createElement('template');
 	template.innerHTML = `	
 	`;
-	let width = 400,
-	height = 300,
-	margin=100;
-	
+		
 	let count = 1;
 	let script = document.createElement('script');
 	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
