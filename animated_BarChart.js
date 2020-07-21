@@ -16,13 +16,13 @@
 			script.charset='utf-8'
 			script.type='text/javascript'
 			document.head.append(script);
-	    	console.log("tag appended...");	 
+	    		console.log("tag appended...");	 
 		}
 
 		//Fired when the widget is added to the html DOM of the page
 		connectedCallback() {
 			script.onload = () => {
-		    console.log("script loaded...");
+		    	console.log("script loaded...");
 			this.redraw();
 			};
 	  
