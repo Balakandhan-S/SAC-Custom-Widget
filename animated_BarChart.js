@@ -5,7 +5,7 @@
 	let width = 400,
 	height = 300,
 	margin=100;
-	let _domAttached = false;
+	
 	let count = 1;
 	let script = document.createElement('script');
 	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
@@ -13,11 +13,15 @@
 
 		constructor() {
 			super();
+			this._domAttached = false;
 			this._shadowRoot = this.attachShadow({mode: "open"});
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
+			this._width = 400,
+			this._height = 300,
+			this._margin=100;
 			console.log("Constructor.. "+count);
 			count = count + 1;
-			if(domAttached){
+			if(this._domAttached){
 				this.redraw();
 			}
 		}
@@ -33,7 +37,7 @@
 		    		console.log("script loaded...");
 				this.redraw();
 			};
-			_domAttached = true;
+			this._domAttached = true;
 		}
    
 		//Fired when the widget is removed from the html DOM of the page (e.g. by hide)
@@ -61,17 +65,20 @@
   
 		onCustomWidgetResize(width, height){
 			console.log(width+"   "+height);
+			this._width = width;
+			this.height = height;
+			this.redraw();
 		}
-  
+  		
 
 		redraw() {
 	  
 			console.log("redraw...");  
-			var svg = d3.select(this.shadowRoot).append("svg").attr("width", width+margin).attr("height", height + margin);
-			var xScale = d3.scaleBand().range([0, width]).padding(0.4),
-			yScale = d3.scaleLinear().range([height, 0]);
+			var svg = d3.select(this.shadowRoot).append("svg").attr("width", this._width + this._margin).attr("height", this._height + this._margin);
+			var xScale = d3.scaleBand().range([0, this._width]).padding(0.4),
+			yScale = d3.scaleLinear().range([this._height, 0]);
 
-			var g = svg.append("g").attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
+			var g = svg.append("g").attr("transform", "translate(" + this._margin/2 + "," + this._margin/2 + ")");
 
 			var data = [{
 				"year": 2011,
@@ -96,8 +103,7 @@
 				{
 				"year": 2016,
 				"value": 78
-				}
-				];
+				}];
 
 			xScale.domain(data.map(function(d) {
 				return d.year;
@@ -106,7 +112,7 @@
 				return d.value;
 			})]);
 
-			g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(xScale));
+			g.append("g").attr("transform", "translate(0," + this._height + ")").call(d3.axisBottom(xScale));
 
 			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
 				return "$" + d;
