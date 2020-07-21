@@ -8,7 +8,7 @@
 	height = 300,
 	margin=100;
 	let script = document.createElement('script');
-	customElements.define('animated-BarChart', class animated_BarChart extends HTMLElement {
+	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
 
 
 		constructor() {
