@@ -1,7 +1,6 @@
 (function() {
 	const template = document.createElement('template');
-	template.innerHTML = `
-		<svg></svg>
+	template.innerHTML = `	
 	`;
 	let width = 400,
 	height = 300,
@@ -61,7 +60,7 @@
 		redraw() {
 	  
 			console.log("redraw...");  
-			var svg = d3.select(this.shadowRoot).select("svg").attr("width", width+margin).attr("height", height + margin);
+			var svg = d3.select(this.shadowRoot).append("svg").attr("width", width+margin).attr("height", height + margin);
 			var xScale = d3.scaleBand().range([0, width]).padding(0.4),
 			yScale = d3.scaleLinear().range([height, 0]);
 
