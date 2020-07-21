@@ -5,6 +5,7 @@
 	let width = 400,
 	height = 300,
 	margin=100;
+	let _domAttached = false;
 	let count = 1;
 	let script = document.createElement('script');
 	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
@@ -16,6 +17,13 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			console.log("Constructor.. "+count);
 			count = count + 1;
+			if(domAttached){
+				this.redraw();
+			}
+		}
+
+		//Fired when the widget is added to the html DOM of the page
+		connectedCallback() {
 			script.src = 'https://d3js.org/d3.v5.min.js';
 			script.charset='utf-8'
 			script.type='text/javascript'
@@ -25,12 +33,7 @@
 		    		console.log("script loaded...");
 				this.redraw();
 			};
-	  
-		}
-
-		//Fired when the widget is added to the html DOM of the page
-		connectedCallback() {
-			
+			_domAttached = true;
 		}
    
 		//Fired when the widget is removed from the html DOM of the page (e.g. by hide)
