@@ -77,7 +77,7 @@
 			yScale = d3.scaleLinear().range([this._height, 0]);
 
 			var g = svg.append("g").attr("transform", "translate(" + this._margin/2 + "," + this._margin/2 + ")");
-
+			console.log(this._width+" "+this._height+" "+this._margin/2);
 			var data = [{
 				"year": 2011,
 				"value": 45
