@@ -1,0 +1,136 @@
+(function() {
+	const template = document.createElement('template');
+	template.innerHTML = `	`;
+	let width = 400,
+	height = 300,
+	margin=100;
+	let script = document.createElement('script');
+	customElements.define('animated-BarChart', class animated_BarChart extends HTMLElement {
+
+
+		constructor() {
+			super();
+			this._shadowRoot = this.attachShadow({mode: "open"});
+			this._shadowRoot.appendChild(template.content.cloneNode(true));
+			script.src = 'https://d3js.org/d3.v5.min.js';
+			script.charset='utf-8'
+			script.type='text/javascript'
+			document.head.append(script);
+	    	console.log("tag appended...");	 
+		}
+
+		//Fired when the widget is added to the html DOM of the page
+		connectedCallback() {
+			script.onload = () => {
+		    console.log("script loaded...");
+			this.redraw();
+			};
+	  
+		}
+   
+		//Fired when the widget is removed from the html DOM of the page (e.g. by hide)
+		disconnectedCallback() {
+
+		}
+
+		//When the custom widget is updated, the Custom Widget SDK framework executes this function first
+		onCustomWidgetBeforeUpdate(oChangedProperties) {
+
+		}
+
+		//When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
+		onCustomWidgetAfterUpdate(oChangedProperties) {
+			
+		}
+
+		//When the custom widget is removed from the canvas or the analytic application is closed
+		onCustomWidgetDestroy() {}
+
+
+		//When the custom widget is resized on the canvas, the Custom Widget SDK framework executes the following JavaScript function call on the custom widget
+		// Commented out by default.  If it is enabled, SAP Analytics Cloud will track DOM size changes and call this callback as needed
+		//  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
+  
+		onCustomWidgetResize(width, height){
+			console.log(width+"   "+height);
+		}
+  
+
+		redraw() {
+	  
+			console.log("redraw...");  
+			var svg = d3.select(this.shadowRoot).append("svg").attr("width", width+margin).attr("height", height + margin);
+			var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+			yScale = d3.scaleLinear().range([height, 0]);
+
+			var g = svg.append("g").attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
+
+			var data = [{
+				"year": 2011,
+				"value": 45
+				},
+				{
+				"year": 2012,
+				"value": 47
+				},
+				{
+				"year": 2013,
+				"value": 52
+				},
+				{
+				"year": 2014,
+				"value": 70
+				},
+				{
+				"year": 2015,
+				"value": 75
+				},
+				{
+				"year": 2016,
+				"value": 78
+				}
+				];
+
+			xScale.domain(data.map(function(d) {
+				return d.year;
+			}));
+			yScale.domain([0, d3.max(data, function(d) {
+				return d.value;
+			})]);
+
+			g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(xScale));
+
+			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
+				return "$" + d;
+			}).ticks(10));
+
+
+			g.selectAll(".bar")
+			.data(data)
+			.enter().append("rect")
+			.attr("class", "bar")
+			.attr("style", "fill:steelblue")
+			.attr("x", function(d) {
+				return xScale(d.year);
+			})
+			.attr("y", function(d) {
+				return yScale(d.value);
+			})
+			.attr("width", xScale.bandwidth())
+			.attr("height", function(d) {
+				return height - yScale(d.value);
+			})
+			.on("mouseover", function() {
+				d3.select(this)
+				.style("fill", "orange");
+			})
+			.on("mouseout", function() {
+				d3.select(this)
+				.style("fill", "steelblue")
+			});
+			console.log("end");
+
+		}
+ 
+	});
+})();
