@@ -5,6 +5,7 @@
 	let width = 400,
 	height = 300,
 	margin=100;
+	let count = 1;
 	let script = document.createElement('script');
 	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
 
@@ -13,6 +14,8 @@
 			super();
 			this._shadowRoot = this.attachShadow({mode: "open"});
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
+			console.log("Constructor.. "+count);
+			count = count + 1;
 			script.src = 'https://d3js.org/d3.v5.min.js';
 			script.charset='utf-8'
 			script.type='text/javascript'
@@ -31,7 +34,7 @@
    
 		//Fired when the widget is removed from the html DOM of the page (e.g. by hide)
 		disconnectedCallback() {
-
+			console.log("deleted");
 		}
 
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function first
