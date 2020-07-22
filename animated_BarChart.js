@@ -15,7 +15,7 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			this._width = 400,
 			this._height = 300,
-			this._margin=100;
+			this._margin= 0.1*(Math.min(this._width, this._height)) ;
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			if(this._domAttached){
@@ -72,7 +72,7 @@
 		redraw() {
 	  
 			console.log("redraw...");  
-			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
+			var svgHeight = this._height, svgWidth = this._width, svgMargin = 0.1*(Math.min(svgWidth, svgHeight));
 			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
 			var xScale = d3.scaleBand().range([0, svgWidth]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight, 0]);
