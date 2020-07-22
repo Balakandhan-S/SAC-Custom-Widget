@@ -72,7 +72,7 @@
 		redraw() {
 	  
 			console.log("redraw...");  
-			var svgHeight = this._height, svgWidth = this._width, svgMargin = 0.1*(Math.min(svgWidth, svgHeight));
+			var svgHeight = this._height, svgWidth = this._width, svgMargin = 0.3*(Math.min(svgWidth, svgHeight));
 			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
 			var xScale = d3.scaleBand().range([0, svgWidth]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight, 0]);
