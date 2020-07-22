@@ -64,7 +64,7 @@
 			console.log(width+"   "+height);
 			this._width = width;
 			this._height = height;
-			this._margin= 0.2*(Math.min(this._width, this._height)) ;
+			this._margin= 0.1*(Math.min(this._width, this._height)) ;
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
@@ -74,11 +74,11 @@
 	  
 			console.log("redraw...");  
 			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
-			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth - svgMargin).attr("height", svgHeight - svgMargin);
-			var xScale = d3.scaleBand().range([0, svgWidth-svgMargin]).padding(0.4),
-			yScale = d3.scaleLinear().range([svgHeight-svgMargin, 0]);
+			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth).attr("height", svgHeight).attr("x",0).attr("y",0);
+			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin*1)]).padding(0.4),
+			yScale = d3.scaleLinear().range([svgHeight-(svgMargin*1), 0]);
 			
-			var g = svg.append("g").attr("transform", "translate(" + svgMargin + "," + svgMargin/2 + ")");
+			var g = svg.append("g").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
 			console.log(svgWidth+" "+svgHeight+" "+svgMargin/2);
 			var data = [{
 				"year": 2011,
@@ -112,7 +112,7 @@
 				return d.value;
 			})]);
 
-			g.append("g").attr("transform", "translate(0," + svgHeight-svgMargin + ")").call(d3.axisBottom(xScale));
+			g.append("g").attr("transform", "translate(0," + (svgHeight-(svgMargin/2)) + ")").call(d3.axisBottom(xScale));
 
 			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
 				return "$" + d;
