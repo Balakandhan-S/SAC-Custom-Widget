@@ -16,7 +16,7 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			this._width = 400,
 			this._height = 300,
-			this._margin= 0.1*(Math.min(this._width, this._height)) ;
+			this._margin= 70;
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			if(this._domAttached){
@@ -63,7 +63,7 @@
   
 		onCustomWidgetResize(width, height){
 			console.log(width+"   "+height);
-			this._margin= 0.1*(Math.min(width, height));
+			this._margin= 70;
 			this._width = width-this._margin;
 			this._height = height- this._margin;
 			d3.select(this.shadowRoot).select("svg").remove();
