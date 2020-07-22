@@ -75,12 +75,12 @@
 			console.log("redraw...");  
 			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
 			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth).attr("height", svgHeight).attr("x",0).attr("y",0);
-			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin*1)]).padding(0.4),
-			yScale = d3.scaleLinear().range([svgHeight-(svgMargin*1), 0]);
+			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin)]).padding(0.4),
+			yScale = d3.scaleLinear().range([svgHeight-(svgMargin), 0]);
 			
-			var g = svg.append("g").attr("x",0).attr("y",0);
-			//.attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
-			console.log(svgWidth+" "+svgHeight+" "+svgMargin/2);
+			var g = svg.append("g").attr("width", svgWidth-svgMargin).attr("height", svgWidth-svgMargin)
+			.attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
+			console.log(svgWidth+" "+svgHeight+" "+svgMargin);
 			var data = [{
 				"year": 2011,
 				"value": 45
