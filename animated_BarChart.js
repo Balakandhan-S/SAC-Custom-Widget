@@ -64,7 +64,7 @@
 			console.log(width+"   "+height);
 			this._width = width;
 			this._height = height;
-			this._margin= 0.1*(Math.min(this._width, this._height)) ;
+			this._margin= 0.3*(Math.min(this._width, this._height)) ;
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
