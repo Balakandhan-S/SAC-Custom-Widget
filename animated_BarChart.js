@@ -62,7 +62,7 @@
   
 		onCustomWidgetResize(width, height){
 			console.log(width+"   "+height);
-			this._margin= 0.1*(Math.min(this._width, this._height));
+			this._margin= 0.1*(Math.min(width, height));
 			this._width = width-this._margin;
 			this._height = height- this._margin;
 			d3.select(this.shadowRoot).select("svg").remove();
@@ -78,8 +78,8 @@
 			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin)]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight-(svgMargin), 0]);
 			
-			var g = svg.append("svg").attr("width", svgWidth-svgMargin).attr("height", svgHeight-svgMargin)
-			 .attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
+			var g = svg.append("svg").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")")
+			.attr("width", svgWidth-svgMargin).attr("height", svgHeight-svgMargin);
 			console.log(svgWidth+" "+svgHeight+" "+svgMargin);
 			var data = [{
 				"year": 2011,
