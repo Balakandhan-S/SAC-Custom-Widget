@@ -78,7 +78,8 @@
 			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin*1)]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight-(svgMargin*1), 0]);
 			
-			var g = svg.append("g").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
+			var g = svg.append("g").attr("x",0).attr("y",0);
+			//.attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
 			console.log(svgWidth+" "+svgHeight+" "+svgMargin/2);
 			var data = [{
 				"year": 2011,
