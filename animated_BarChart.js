@@ -64,8 +64,8 @@
 		onCustomWidgetResize(width, height){
 			console.log(width+"   "+height);
 			this._margin= 70;
-			this._width = width-this._margin;
-			this._height = height- this._margin;
+			this._width = width;
+			this._height = height;
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
