@@ -78,7 +78,7 @@
 			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin)]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight-(svgMargin), 0]);
 			
-			var g = svg.append("g").attr("width", svgWidth-svgMargin).attr("height", svgWidth-svgMargin)
+			var g = svg.append("g").attr("width", svgWidth-svgMargin).attr("height", svgHeight-svgMargin)
 			.attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
 			console.log(svgWidth+" "+svgHeight+" "+svgMargin);
 			var data = [{
