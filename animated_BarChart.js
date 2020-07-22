@@ -7,7 +7,7 @@
 	let count = 1;
 	let script = document.createElement('script');
 	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
-	var height = 300, width = 400, margin = 70;
+	let height = 300, width = 400, margin = 70;
 
 		constructor() {
 			super();
@@ -60,8 +60,6 @@
   
 		onCustomWidgetResize(_width, _height){
 			console.log(width+"   "+height);
-			width = _width;
-			height = _height;
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
