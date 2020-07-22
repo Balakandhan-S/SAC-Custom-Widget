@@ -7,16 +7,13 @@
 	let count = 1;
 	let script = document.createElement('script');
 	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
-
+	var height = 300, width = 400, margin = 70;
 
 		constructor() {
 			super();
 			this._domAttached = false;
 			this._shadowRoot = this.attachShadow({mode: "open"});
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
-			this._width = 400,
-			this._height = 300,
-			this._margin= 70;
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			if(this._domAttached){
@@ -61,11 +58,10 @@
 		// Commented out by default.  If it is enabled, SAP Analytics Cloud will track DOM size changes and call this callback as needed
 		//  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
   
-		onCustomWidgetResize(width, height){
+		onCustomWidgetResize(_width, _height){
 			console.log(width+"   "+height);
-			this._margin= 70;
-			this._width = width;
-			this._height = height;
+			width = _width;
+			height = _height;
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
@@ -74,78 +70,81 @@
 		redraw() {
 	  
 			console.log("redraw...");  
-			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
-			var svg = d3.select(this.shadowRoot).append("svg").attr("x",svgMargin).attr("y",svgMargin).attr("width", svgWidth).attr("height", svgHeight);
-			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin)]).padding(0.4),
-			yScale = d3.scaleLinear().range([svgHeight-(svgMargin), 0]);
-			
-			var g = svg.append("svg").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")")
-			.attr("width", svgWidth-svgMargin).attr("height", svgHeight-svgMargin);
-			console.log(svgWidth+" "+svgHeight+" "+svgMargin);
-			var data = [{
-				"year": 2011,
-				"value": 45
-				},
-				{
-				"year": 2012,
-				"value": 47
-				},
-				{
-				"year": 2013,
-				"value": 52
-				},
-				{
-				"year": 2014,
-				"value": 70
-				},
-				{
-				"year": 2015,
-				"value": 75
-				},
-				{
-				"year": 2016,
-				"value": 78
-				}];
+			var svg = d3.select(this.shadowRoot).append("svg")
+    .attr("width", width+margin).attr("height", height + margin).style("background-color","lightgray");
+    var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+      yScale = d3.scaleLinear().range([height, 0]);
 
-			xScale.domain(data.map(function(d) {
-				return d.year;
-			}));
-			yScale.domain([0, d3.max(data, function(d) {
-				return d.value;
-			})]);
+    var g = svg.append("g")
+      .attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
 
-			g.append("g").attr("transform", "translate(0," + (svgHeight-(svgMargin/2)) + ")").call(d3.axisBottom(xScale));
+    var data = [{
+        "year": 2011,
+        "value": 45
+      },
+      {
+        "year": 2012,
+        "value": 47
+      },
+      {
+        "year": 2013,
+        "value": 52
+      },
+      {
+        "year": 2014,
+        "value": 70
+      },
+      {
+        "year": 2015,
+        "value": 75
+      },
+      {
+        "year": 2016,
+        "value": 78
+      }
+    ];
+	
+    xScale.domain(data.map(function(d) {
+      return d.year;
+    }));
+    yScale.domain([0, d3.max(data, function(d) {
+      return d.value;
+    })]);
 
-			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
-				return "$" + d;
-			}).ticks(10));
+    g.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(xScale));
+
+    g.append("g")
+      .call(d3.axisLeft(yScale).tickFormat(function(d) {
+        return "$" + d;
+      }).ticks(10));
 
 
-			g.selectAll(".bar")
-			.data(data)
-			.enter().append("rect")
-			.attr("class", "bar")
-			.attr("style", "fill:steelblue")
-			.attr("x", function(d) {
-				return xScale(d.year);
-			})
-			.attr("y", function(d) {
-				return yScale(d.value);
-			})
-			.attr("width", xScale.bandwidth())
-			.attr("height", function(d) {
-				let hght = (svgHeight - yScale(d.value));
-				return hght;
-			})
-			.on("mouseover", function() {
-				d3.select(this)
-				.style("fill", "orange");
-			})
-			.on("mouseout", function() {
-				d3.select(this)
-				.style("fill", "steelblue")
-			});
-			console.log("end");
+    g.selectAll(".bar")
+      .data(data)
+      .enter().append("rect")
+      .attr("class", "bar")
+      .attr("style", "fill:steelblue")
+      .attr("x", function(d) {
+        return xScale(d.year);
+      })
+      .attr("y", function(d) {
+        return yScale(d.value);
+      })
+      .attr("width", xScale.bandwidth())
+      .attr("height", function(d) {
+        return height - yScale(d.value);
+      })
+      .on("mouseover", function() {
+        d3.select(this)
+          .style("fill", "orange");
+      })
+      .on("mouseout", function() {
+        d3.select(this)
+          .style("fill", "steelblue")
+      });
+
 
 		}
  
