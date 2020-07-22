@@ -112,7 +112,7 @@
 				return d.value;
 			})]);
 
-			g.append("g").attr("transform", "translate(0," + svgHeight + ")").call(d3.axisBottom(xScale));
+			g.append("g").attr("transform", "translate(0," + svgHeight-svgMargin + ")").call(d3.axisBottom(xScale));
 
 			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
 				return "$" + d;
