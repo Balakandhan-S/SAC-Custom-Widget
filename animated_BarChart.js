@@ -29,10 +29,9 @@
 			script.charset='utf-8'
 			script.type='text/javascript'
 			document.head.append(script);
-	    		console.log("tag appended...");	 
+	    		console.log("D3 script appended...");	 
 			script.onload = () => {
 		    		console.log("script loaded...");
-				d3.select(this.shadowRoot).append("svg");
 				this.redraw();
 			};
 			this._domAttached = true;
@@ -65,6 +64,7 @@
 			console.log(width+"   "+height);
 			this._width = width;
 			this._height = height;
+			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
   		
@@ -73,7 +73,7 @@
 	  
 			console.log("redraw...");  
 			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
-			var svg = d3.select(this.shadowRoot).select("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
+			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight + svgMargin);
 			var xScale = d3.scaleBand().range([0, svgWidth]).padding(0.4),
 			yScale = d3.scaleLinear().range([svgHeight, 0]);
 			
