@@ -1,3 +1,4 @@
+
 (function() {
 	const template = document.createElement('template');
 	template.innerHTML = `	
@@ -15,7 +16,7 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			this._width = 400,
 			this._height = 300,
-			this._margin= 70;
+			this._margin= 0.1*(Math.min(this._width, this._height)) ;
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			if(this._domAttached){
@@ -62,7 +63,7 @@
   
 		onCustomWidgetResize(width, height){
 			console.log(width+"   "+height);
-			this._margin= 70;
+			this._margin= 0.1*(Math.min(width, height));
 			this._width = width-this._margin;
 			this._height = height- this._margin;
 			d3.select(this.shadowRoot).select("svg").remove();
@@ -74,11 +75,12 @@
 	  
 			console.log("redraw...");  
 			var svgHeight = this._height, svgWidth = this._width, svgMargin = this._margin;
-			var svg = d3.select(this.shadowRoot).append("svg").attr("width", svgWidth + svgMargin).attr("height", svgHeight+svgMargin);
-			var xScale = d3.scaleBand().range([0, svgWidth]).padding(0.4),
-			yScale = d3.scaleLinear().range([svgHeight, 0]);
+			var svg = d3.select(this.shadowRoot).append("svg").attr("x",svgMargin).attr("y",svgMargin).attr("width", svgWidth).attr("height", svgHeight);
+			var xScale = d3.scaleBand().range([0, svgWidth-(svgMargin)]).padding(0.4),
+			yScale = d3.scaleLinear().range([svgHeight-(svgMargin), 0]);
 			
-			var g = svg.append("g").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")");
+			var g = svg.append("svg").attr("transform", "translate(" + svgMargin/2 + "," + svgMargin/2 + ")")
+			.attr("width", svgWidth-svgMargin).attr("height", svgHeight-svgMargin);
 			console.log(svgWidth+" "+svgHeight+" "+svgMargin);
 			var data = [{
 				"year": 2011,
@@ -112,7 +114,7 @@
 				return d.value;
 			})]);
 
-			g.append("g").attr("transform", "translate(0," + (svgHeight+ ")").call(d3.axisBottom(xScale));
+			g.append("g").attr("transform", "translate(0," + (svgHeight-(svgMargin/2)) + ")").call(d3.axisBottom(xScale));
 
 			g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d) {
 				return "$" + d;
