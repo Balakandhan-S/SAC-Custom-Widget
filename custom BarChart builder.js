@@ -3,12 +3,15 @@
 	template.innerHTML = `
 		<form id="form">
 			<fieldset>
-				<legend>Data Binding</legend>
+				<legend>Bar Properties</legend>
 				<table>
 					<tr>
 						<td>Color</td>
-						<td><input id="bar_color" type="text" size="10" maxlength="40"></td>
+						<td><input type="color" id="bar_color" name="head" value="#4682B4"></td>
 					</tr>
+				</table>
+				<legend>Data Binding</legend>
+				<table>
 					<tr>
 						<td><label for="bar_datajson">Data json</label></td>
 						<td><textarea id="bar_datajson" name="Data json" rows="7" cols="20">
