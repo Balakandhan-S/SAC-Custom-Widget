@@ -113,7 +113,7 @@
 			})]);
 
 			g.append("g")
-			.attr("transform", "translate(0," + height + ")")
+			.attr("transform", "translate(0," + (height-margin) + ")")
 			.call(d3.axisBottom(xScale));
 
 			g.append("g")
