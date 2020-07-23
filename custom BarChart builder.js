@@ -10,6 +10,9 @@
 						<td><input type="color" id="bar_color" name="head" value="#4682B4"></td>
 					</tr>
 				</table>
+			</fieldset>				
+			<br>				
+			<fieldset>
 				<legend>Data Binding</legend>
 				<table>
 					<tr>
