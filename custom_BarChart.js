@@ -51,7 +51,7 @@
 			if ("color" in changedProperties) {
 				//this.$color = changedProperties["color"];
 				barcolor = changedProperties["color"];
-				console.log("color changed is "+changedProperties["color"]);
+				console.log("color changed is "+barcolor);
 			}
 			if ("datajson" in changedProperties) {
 				
