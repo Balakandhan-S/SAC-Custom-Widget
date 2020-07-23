@@ -37,6 +37,12 @@
 			super();
 			this._shadowRoot = this.attachShadow({mode: "open"});
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
+			$('#mytextarea').keypress(function(e){
+  				if(e.keyCode == 13 && !e.shiftKey) {
+   				e.preventDefault();
+  	 			this._submit.bind(this)
+				}
+			});
 			this._shadowRoot.getElementById("form").addEventListener("submit", this._submit.bind(this));
 		}
 
