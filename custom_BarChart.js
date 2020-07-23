@@ -42,15 +42,15 @@
 		}
 
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function first
-		onCustomWidgetBeforeUpdate(oChangedProperties) {
+		onCustomWidgetBeforeUpdate(changedProperties) {
 
 		}
 
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
-		onCustomWidgetAfterUpdate(oChangedProperties) {
-			if ("color" in ochangedProperties) {
-				//this.$color = ochangedProperties["color"];
-				console.log("color changed is "+ochangedProperties["color"]);
+		onCustomWidgetAfterUpdate(changedProperties) {
+			if ("color" in changedProperties) {
+				//this.$color = changedProperties["color"];
+				console.log("color changed is "+changedProperties["color"]);
 			}
 		}
 
