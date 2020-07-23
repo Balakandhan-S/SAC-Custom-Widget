@@ -6,7 +6,7 @@
 		
 	let count = 1;
 	let script = document.createElement('script');
-	let height = 200, width = 300, margin = 70;
+	let height = 200, width = 300, margin = 70, barcolor="steelblue";
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
@@ -50,11 +50,14 @@
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
 				//this.$color = changedProperties["color"];
+				barcolor = changedProperties["color"];
 				console.log("color changed is "+changedProperties["color"]);
 			}
 			if ("datajson" in changedProperties) {
+				
 				console.log("data changed is "+changedProperties["datajson"]);
 			}
+			this.redraw();
 		}
 
 		//When the custom widget is removed from the canvas or the analytic application is closed
@@ -132,7 +135,7 @@
 			.data(data)
 			.enter().append("rect")
 			.attr("class", "bar")
-			.attr("style", "fill:steelblue")
+			.attr("style", "fill:"+barcolor)
 			.attr("x", function(d) {
 			return xScale(d.year);
 			})
