@@ -6,7 +6,7 @@
 		
 	let count = 1;
 	let script = document.createElement('script');
-	let height = 200, width = 300, margin = 70, barcolor="steelblue";
+	let height = 200, width = 300, margin = 70, barcolor="steelblue", scriptAppend = false;
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
@@ -31,6 +31,7 @@
 	    		console.log("D3 script appended...");	 
 			script.onload = () => {
 		    		console.log("script loaded...");
+				scriptAppend = true;
 				this.redraw();
 			};
 			this._domAttached = true;
@@ -57,7 +58,10 @@
 				
 				console.log("data changed is "+changedProperties["datajson"]);
 			}
-			this.redraw();
+			if(scriptAppend){
+				d3.select(this.shadowRoot).select("svg").remove();
+				this.redraw();
+			}	
 		}
 
 		//When the custom widget is removed from the canvas or the analytic application is closed
