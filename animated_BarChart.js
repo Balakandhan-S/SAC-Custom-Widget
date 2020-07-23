@@ -72,7 +72,7 @@
 	  
 			console.log("redraw...");  
 			var svg = d3.select(this.shadowRoot).append("svg")
-   			.attr("width", width+margin).attr("height", height + margin).style("background-color","lightgray");
+   			.attr("width", width-margin).attr("height", height - margin).style("background-color","lightgray");
     			var xScale = d3.scaleBand().range([0, width]).padding(0.4),
       			yScale = d3.scaleLinear().range([height, 0]);
 
