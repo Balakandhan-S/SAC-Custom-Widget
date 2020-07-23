@@ -60,7 +60,7 @@
 		//  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
   
 		onCustomWidgetResize(_width, _height){
-			console.log(width+"   "+height);
+			console.log(_width+"   "+_height);
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
