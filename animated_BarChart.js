@@ -73,8 +73,8 @@
 			console.log("redraw...");  
 			var svg = d3.select(this.shadowRoot).append("svg")
    			.attr("width", width).attr("height", height ).style("background-color","lightgray");
-    			var xScale = d3.scaleBand().range([0, width]).padding(0.4),
-      			yScale = d3.scaleLinear().range([height, 0]);
+    			var xScale = d3.scaleBand().range([0, width-margin]).padding(0.4),
+      			yScale = d3.scaleLinear().range([height-margin, 0]);
 
     			var g = svg.append("g")
       			.attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
