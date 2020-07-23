@@ -52,6 +52,9 @@
 				//this.$color = changedProperties["color"];
 				console.log("color changed is "+changedProperties["color"]);
 			}
+			if ("datajson" in changedProperties) {
+				console.log("data changed is "+changedProperties["datajson"]);
+			}
 		}
 
 		//When the custom widget is removed from the canvas or the analytic application is closed
