@@ -135,7 +135,7 @@
 			.data(data)
 			.enter().append("rect")
 			.attr("class", "bar")
-			.attr("style", "fill:"+barcolor)
+			.style("fill", barcolor)
 			.attr("x", function(d) {
 			return xScale(d.year);
 			})
@@ -152,7 +152,7 @@
 			})
 			.on("mouseout", function() {
 			d3.select(this)
-			  .style("fill", "steelblue")
+			  .style("fill", barcolor)
 			});
 
 
