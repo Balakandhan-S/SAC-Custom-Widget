@@ -7,7 +7,7 @@
 	let count = 1;
 	let script = document.createElement('script');
 	let height = 200, width = 300, margin = 70;
-	customElements.define('animated-barchart', class animated_BarChart extends HTMLElement {
+	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
 		constructor() {
