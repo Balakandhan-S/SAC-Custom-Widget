@@ -48,7 +48,10 @@
 
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(oChangedProperties) {
-			
+			if ("color" in changedProperties) {
+				//this.$color = changedProperties["color"];
+				console.log("color changed is "+changedProperties["color"]);
+			}
 		}
 
 		//When the custom widget is removed from the canvas or the analytic application is closed
