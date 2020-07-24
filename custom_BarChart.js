@@ -26,9 +26,11 @@
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			this._barcolor = "";
-			if(scriptAppend){
+			this.wdth = 0;
+			this.hght = 0;
+			/*if(scriptAppend){
 				this.redraw();
-			}
+			}*/
 		}
 
 		//Fired when the widget is added to the html DOM of the page
@@ -72,7 +74,9 @@
   
 		onCustomWidgetResize(_width, _height){
 			console.log(_width+"   "+_height);
-			width = _width;
+			this.wdth = _width;
+			width =  _width;
+			this.hght = _height;
 			height = _height;
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
@@ -82,6 +86,7 @@
 		redraw() {
 	  
 			console.log("redraw...");  
+			console.log("prop width "+this.wdth+" & prop height "+this.hght);
 			var svg = d3.select(this.shadowRoot).append("svg")
    			.attr("width", width).attr("height", height );
     			var xScale = d3.scaleBand().range([0, width-margin]).padding(0.4),
