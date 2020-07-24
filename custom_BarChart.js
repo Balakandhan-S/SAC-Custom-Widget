@@ -32,7 +32,7 @@
 			script.onload = () => {
 		    		console.log("script loaded...");
 				scriptAppend = true;
-				var tag_width = d3.select(div).style('width')
+				var tag_width = d3.select(this.shadowRoot).style('width')
             			.slice(0, -2);
 				console.log("current tag width "+Math.round(Number(width)));
 				this.redraw();
