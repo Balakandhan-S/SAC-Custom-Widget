@@ -7,7 +7,7 @@
 				<table>
 					<tr>
 						<td>Color</td>
-						<td><input type="color" id="bar_color" name="head" value="#4682B4"></td>
+						<td><input type="color" id="bar_color" name="bar_color" value="#4682B4"></td>
 					</tr>
 				</table>
 			</fieldset>				
