@@ -73,6 +73,14 @@
 		//  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
   
 		onCustomWidgetResize(_width, _height){
+			this.dispatchEvent(new CustomEvent("propertiesChanged", {
+					detail: {
+						properties: {
+							chWidth: _width,
+							chHeight: _height
+						}
+					}
+			}));
 			console.log(_width+"   "+_height);
 			this.wdth = _width;
 			width =  _width;
