@@ -7,6 +7,7 @@
 	let count = 1;
 	let script = document.createElement('script');
 	let height = 200, width=300, margin = 70, barcolor=this.$color, scriptAppend = false;
+	console.log("props : "+this.$color+" and "+this.$datajson);
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
@@ -51,7 +52,6 @@
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
-				//this.$color = changedProperties["color"];
 				this.$color = changedProperties["color"];
 				barcolor = this.$color;
 				console.log("color changed is "+barcolor);
