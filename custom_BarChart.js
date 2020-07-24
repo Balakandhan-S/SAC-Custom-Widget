@@ -18,7 +18,6 @@
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			this._barcolor = "";
-			console.log(this.$datajson);
 			if(this._domAttached){
 				this.redraw();
 			}
