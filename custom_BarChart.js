@@ -17,6 +17,7 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			console.log("Constructor.. "+count);
 			count = count + 1;
+			console.log(this.$datajson);
 			if(this._domAttached){
 				this.redraw();
 			}
