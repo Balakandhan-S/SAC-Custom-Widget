@@ -52,6 +52,7 @@
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
+				console.log("color changed is "+changedProperties["color"]);
 				this.$color = changedProperties["color"];
 				barcolor = this.$color;
 				console.log("color changed is "+barcolor);
