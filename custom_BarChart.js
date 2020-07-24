@@ -7,7 +7,7 @@
 	let count = 1;
 	let script = document.createElement('script');
 	let height = 200, width=300, margin = 70, barcolor=this.$color, scriptAppend = false;
-	console.log("props : "+this.$color+" and "+this.$datajson);
+	console.log("props : "+this.color+" and "+this.datajson);
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
