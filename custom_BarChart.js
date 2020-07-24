@@ -26,23 +26,13 @@
 			console.log("Constructor.. "+count);
 			count = count + 1;
 			this._barcolor = "";
-			if(this._domAttached){
+			if(scriptAppend){
 				this.redraw();
 			}
 		}
 
 		//Fired when the widget is added to the html DOM of the page
 		connectedCallback() {
-			script.src = 'https://d3js.org/d3.v5.min.js';
-			script.charset='utf-8'
-			script.type='text/javascript'
-			document.head.append(script);
-	    		console.log("D3 script appended...");	 
-			script.onload = () => {
-		    		console.log("script loaded...");
-				scriptAppend = true;
-				this.redraw();
-			};
 			this._domAttached = true;
 		}
    
