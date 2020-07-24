@@ -52,7 +52,7 @@
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
 				this._barcolor = changedProperties["color"];
-				console.log("color changed is "+barcolor);
+				console.log("color changed is "+this._barcolor);
 			}
 			if ("datajson" in changedProperties) {
 				
