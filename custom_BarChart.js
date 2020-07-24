@@ -6,8 +6,16 @@
 		
 	let count = 1;
 	let script = document.createElement('script');
+	script.src = 'https://d3js.org/d3.v5.min.js';
+	script.charset='utf-8'
+	script.type='text/javascript'
 	let height = 200, width=300, margin = 70, scriptAppend = false;
-	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
+	document.head.append(script);
+	console.log("D3 script appended...");	 
+	script.onload = () => {
+	    		console.log("script loaded...");
+			scriptAppend = true;
+			customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
 		constructor() {
@@ -162,5 +170,8 @@
 
 		}
  
-	});
+	});	
+			};
+	
+
 })();
