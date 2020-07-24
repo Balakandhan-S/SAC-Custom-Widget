@@ -88,7 +88,7 @@
    			.attr("width", width).attr("height", height );
     			var xScale = d3.scaleBand().range([0, width-margin]).padding(0.4),
       			yScale = d3.scaleLinear().range([height-margin, 0]);
-
+			var brclr = this._barcolor; 
     			var g = svg.append("g")
       			.attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
 
@@ -133,13 +133,13 @@
 			.call(d3.axisLeft(yScale).tickFormat(function(d) {
 			return "$" + d;
 			}).ticks(10));
-
-
+			
+			
 			g.selectAll(".bar")
 			.data(data)
 			.enter().append("rect")
 			.attr("class", "bar")
-			.style("fill", this._barcolor)
+			.style("fill", brclr)
 			.attr("x", function(d) {
 			return xScale(d.year);
 			})
@@ -156,7 +156,7 @@
 			})
 			.on("mouseout", function() {
 			d3.select(this)
-			  .style("fill", this._barcolor)
+			  .style("fill", brclr)
 			});
 
 
