@@ -28,9 +28,7 @@
 			this._barcolor = "";
 			this.wdth = 0;
 			this.hght = 0;
-			/*if(scriptAppend){
-				this.redraw();
-			}*/
+			this._datajson = undefined;
 		}
 
 		//Fired when the widget is added to the html DOM of the page
@@ -55,8 +53,8 @@
 				console.log("color changed is "+this._barcolor);
 			}
 			if ("datajson" in changedProperties) {
-				
-				console.log("data changed is "+changedProperties["datajson"]);
+				this._datajson = changedProperties["datajson"];
+				console.log("data changed is "+this._datajson);
 			}
 			if(scriptAppend){
 				d3.select(this.shadowRoot).select("svg").remove();
@@ -89,7 +87,20 @@
 			d3.select(this.shadowRoot).select("svg").remove();
 			this.redraw();
 		}
-  		
+  		set chWidth(newWidth) {
+			this.wdth = newWidth;
+		}
+
+		get chWidth() {
+			return this.wdth;
+		}
+		set chHeight(newHeight) {
+			this.hght = newHeight;
+		}
+
+		get chHeight() {
+			return this.hght;
+		}		
 
 		redraw() {
 	  
@@ -103,31 +114,7 @@
     			var g = svg.append("g")
       			.attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
 
-			var data = [{
-			"year": 2011,
-			"value": 45
-			},
-			{
-			"year": 2012,
-			"value": 47
-			},
-			{
-			"year": 2013,
-			"value": 52
-			},
-			{
-			"year": 2014,
-			"value": 70
-			},
-			{
-			"year": 2015,
-			"value": 75
-			},
-			{
-			"year": 2016,
-			"value": 78
-			}
-			];
+			var data = this._datajson;
 
 			xScale.domain(data.map(function(d) {
 			return d.year;
