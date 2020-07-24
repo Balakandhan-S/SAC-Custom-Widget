@@ -6,7 +6,7 @@
 		
 	let count = 1;
 	let script = document.createElement('script');
-	let height = 200, width = 300, margin = 70, barcolor="steelblue", scriptAppend = false;
+	let height = 200, width=300, margin = 70, barcolor="steelblue", scriptAppend = false;
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
@@ -32,9 +32,6 @@
 			script.onload = () => {
 		    		console.log("script loaded...");
 				scriptAppend = true;
-				var tag_width = d3.select(this.shadowRoot).style('width')
-            			.slice(0, -2);
-				console.log("current tag width "+Math.round(Number(width)));
 				this.redraw();
 			};
 			this._domAttached = true;
