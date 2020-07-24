@@ -16,9 +16,6 @@
 			this._shadowRoot = this.attachShadow({mode: "open"});
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			console.log("Constructor.. "+count);
-			var tag_width = d3.select(div).style('width')
-            		.slice(0, -2);
-			console.log("current tag width "+Math.round(Number(width)));
 			count = count + 1;
 			if(this._domAttached){
 				this.redraw();
@@ -35,6 +32,9 @@
 			script.onload = () => {
 		    		console.log("script loaded...");
 				scriptAppend = true;
+				var tag_width = d3.select(div).style('width')
+            			.slice(0, -2);
+				console.log("current tag width "+Math.round(Number(width)));
 				this.redraw();
 			};
 			this._domAttached = true;
