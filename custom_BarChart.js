@@ -20,7 +20,6 @@
             		.slice(0, -2);
 			console.log("current tag width "+Math.round(Number(width)));
 			count = count + 1;
-			this._color : string;
 			if(this._domAttached){
 				this.redraw();
 			}
