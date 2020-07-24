@@ -6,7 +6,7 @@
 		
 	let count = 1;
 	let script = document.createElement('script');
-	let height = 200, width=300, margin = 70, barcolor="steelblue", scriptAppend = false;
+	let height = 200, width=300, margin = 70, barcolor=this.$color, scriptAppend = false;
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
@@ -51,7 +51,8 @@
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
 				//this.$color = changedProperties["color"];
-				barcolor = changedProperties["color"];
+				this.$color = changedProperties["color"];
+				barcolor = this.$color;
 				console.log("color changed is "+barcolor);
 			}
 			if ("datajson" in changedProperties) {
