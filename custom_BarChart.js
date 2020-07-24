@@ -6,7 +6,7 @@
 		
 	let count = 1;
 	let script = document.createElement('script');
-	let height = 200, width=300, margin = 70, barcolor="", scriptAppend = false;
+	let height = 200, width=300, margin = 70, scriptAppend = false;
 	customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
 
@@ -17,6 +17,7 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			console.log("Constructor.. "+count);
 			count = count + 1;
+			this._barcolor = "";
 			console.log(this.$datajson);
 			if(this._domAttached){
 				this.redraw();
@@ -51,7 +52,7 @@
 		//When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
-				barcolor = changedProperties["color"];
+				this._barcolor = changedProperties["color"];
 				console.log("color changed is "+barcolor);
 			}
 			if ("datajson" in changedProperties) {
@@ -139,7 +140,7 @@
 			.data(data)
 			.enter().append("rect")
 			.attr("class", "bar")
-			.style("fill", barcolor)
+			.style("fill", this._barcolor)
 			.attr("x", function(d) {
 			return xScale(d.year);
 			})
@@ -156,7 +157,7 @@
 			})
 			.on("mouseout", function() {
 			d3.select(this)
-			  .style("fill", barcolor)
+			  .style("fill", this._barcolor)
 			});
 
 
