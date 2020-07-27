@@ -56,6 +56,7 @@
 				this._datajson = changedProperties["datajson"];
 				console.log("data changed is "+this._datajson);
 			}
+			console.log("width from Props "+changedProperties["chWidth"]);
 			if(scriptAppend){
 				d3.select(this.shadowRoot).select("svg").remove();
 				this.redraw();
