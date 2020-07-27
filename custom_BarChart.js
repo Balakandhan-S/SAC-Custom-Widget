@@ -9,9 +9,9 @@
 	script.src = 'https://d3js.org/d3.v5.min.js';
 	script.charset='utf-8'
 	script.type='text/javascript'
-	let height = 200, width=300, margin = 70, scriptAppend = false;
+	let scriptAppend = false;
 	document.head.append(script);
-	console.log("D3 script appended...");	 
+	 
 	script.onload = () => {
 	    		console.log("script loaded...");
 			scriptAppend = true;
@@ -50,21 +50,21 @@
 		onCustomWidgetAfterUpdate(changedProperties) {
 			if ("color" in changedProperties) {
 				this._barcolor = changedProperties["color"];
-				console.log("color changed is "+this._barcolor);
+				
 			}
 			if ("datajson" in changedProperties) {
 				this._datajson = changedProperties["datajson"];
-				console.log("data changed is "+this._datajson);
+				
 			}
 			if ("chWidth" in changedProperties) {
 				this.wdth = changedProperties["chWidth"];
 				width =  this.wdth;
-				console.log("width changed is "+this.wdth);
+				
 			}
 			if ("chHeight" in changedProperties) {
 				this.hght = changedProperties["chHeight"];
 				height =  this.hght;
-				console.log("height changed is "+this.hght);
+				
 			}
 			if(scriptAppend){
 				d3.select(this.shadowRoot).select("svg").remove();
@@ -81,7 +81,7 @@
 		//  If you don't need to react to resizes, you can save CPU by leaving it uncommented.
   
 		onCustomWidgetResize(_width, _height){
-			console.log(_width+"   "+_height);
+			
 			this.wdth = _width;
 			width =  _width;
 			this.hght = _height;
@@ -114,14 +114,16 @@
 		}		
 
 		redraw() {
-	  
+	  		
 			console.log("redraw...");  
-			console.log("prop width "+this.wdth+" & prop height "+this.hght);
+			
+			var brclr = this._barcolor; 
+			var height = this.hght, width = this.wdth, margin = 70;
 			var svg = d3.select(this.shadowRoot).append("svg")
    			.attr("width", width).attr("height", height );
     			var xScale = d3.scaleBand().range([0, width-margin]).padding(0.4),
       			yScale = d3.scaleLinear().range([height-margin, 0]);
-			var brclr = this._barcolor; 
+			
     			var g = svg.append("g")
       			.attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
 
