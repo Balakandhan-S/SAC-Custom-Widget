@@ -1,0 +1,93 @@
+{
+	"name": "Custom Bar Chart",
+	"description": "The first step in creating a Custom Bar Chart",
+	"eula": "",
+	"vendor": "EBL1KOR",
+	"license": "",
+	"id": "com.bosch.customBarChart",
+	"newInstancePrefix": "custom_BarChart",
+	"version": "1.0.0",
+	"icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAA3NCSVQICAjb4U/gAAAAb1BMVEX///+ZmZl4dXdBPj9hYGGOjpE6ODo8OjwvLC0lISIpJSaMiooyLzH/cjMxLi9GREb/ZSk2MzV9fX1MSks4NjcrJyn/WR9ycnJRT1AtKiv/TRVdXF1ra2v7VCfJyMk+PD6tra+rqqtUUlU0MTNqaGpjxDg2AAAAAXRSTlMAQObYZgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAKhJREFUGNM9z9EagiAMBeDpEGkWNAGhqFTq/Z8xwK/+q7PtZgeg6npEMcBPJ0d1Kmg6ZnFGRZcLESnR7tpoouuVSCPPZYHWee+XxTsrvQeYQrwV97tL5uZigMeoqucTUSnWEVBX4fWaW2BYz1W3bXsLDPldcD8MoYZ3glmMjNbGLJk5igDgnLTGHazdAPo1Gdms2bZXhRmbMuNR5rNWJuX075sMYg57jV94IQ2Xqt1atQAAAABJRU5ErkJggg==",
+	"webcomponents": [
+       				 {
+					"kind": "main",
+					"tag": "custom-barchart",
+				            	"url": "https://balakandhan-s.github.io/JShosting/custom_BarChart.js",
+            					"integrity": "",
+            					"ignoreIntegrity" : true
+        				},
+				{
+					"kind": "builder",
+					"tag": "custom-builder",
+					"url": "https://balakandhan-s.github.io/JShosting/custom%20BarChart%20builder.js",
+					"integrity": "",
+					"ignoreIntegrity": true
+				}
+    			],
+	"properties": 	{
+			"color": 	{
+					"type": "string",
+					"description": "Text Color info",
+					"default": "#4682B4"
+				},
+			"datajson":{
+					"type": "string",
+					"description": "data in json format",
+					"default": "[{'year': 2011,'value': 45},{'year': 2012,'value': 47},{'year': 2013,'value': 52},{'year': 2014,'value': 70},{'year': 2015,'value': 75},{'year': 2016,'value': 78}]"
+				},
+			"chWidth":{
+					"type": "integer",
+					"description": "width of the chart",
+					"default": 400
+				},
+			"chHeight":{
+					"type": "integer",
+					"description": "height of the chart",
+					"default": 300
+				}
+			
+			},
+	"methods":	{
+			"setData": {
+				"description": "Sets the data in the chart.",
+				"parameters": [
+						{
+							"name": "newData",
+							"type": "string",
+							"description": "data json to assign to chart"
+						}
+					],
+				"body": "this.datajson = newData;"
+				},
+			"setColor": {
+				"description": "Sets the color of the bar.",
+				"parameters": [
+					{
+						"name": "newColor",
+						"type": "string",
+						"description": "Colors of the bar"
+					}
+				],
+				"body": "this.color = newColor;"
+				},
+			"setWidth": {
+				"description": "Sets the width & height of the chart",
+				"parameters": [
+					{
+						"name": "newWidth",
+						"type": "integer",
+						"description": "width of the chart"
+					},
+					{
+						"name": "newHeight",
+						"type": "integer",
+						"description": "height of the chart"
+					}
+				],
+				"body": "this.chWidth = newWidth;this.chHeight = newHeight;"
+				}
+			},
+	"events": 		{
+				
+			}
+}
