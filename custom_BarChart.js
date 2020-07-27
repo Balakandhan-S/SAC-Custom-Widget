@@ -58,12 +58,12 @@
 			}
 			if ("chWidth" in changedProperties) {
 				this.wdth = changedProperties["chWidth"];
-				width =  this.wdth;
+				
 				
 			}
 			if ("chHeight" in changedProperties) {
 				this.hght = changedProperties["chHeight"];
-				height =  this.hght;
+				
 				
 			}
 			if(scriptAppend){
@@ -83,9 +83,8 @@
 		onCustomWidgetResize(_width, _height){
 			
 			this.wdth = _width;
-			width =  _width;
 			this.hght = _height;
-			height = _height;
+			
 			this.dispatchEvent(new CustomEvent("propertiesChanged", {
 					detail: {
 						properties: {
