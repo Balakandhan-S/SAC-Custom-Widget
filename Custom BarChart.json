@@ -12,14 +12,14 @@
        				 {
 					"kind": "main",
 					"tag": "custom-barchart",
-				            	"url": "https://balakandhan-s.github.io/JShosting/custom_BarChart.js",
+				            	"url": "https://balakandhan-s.github.io/SAC-Custom-Widget/custom_BarChart.js",
             					"integrity": "",
             					"ignoreIntegrity" : true
         				},
 				{
 					"kind": "builder",
 					"tag": "custom-builder",
-					"url": "https://balakandhan-s.github.io/JShosting/custom%20BarChart%20builder.js",
+					"url": "https://balakandhan-s.github.io/SAC-Custom-Widget/custom%20BarChart%20builder.js",
 					"integrity": "",
 					"ignoreIntegrity": true
 				}
