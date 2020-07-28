@@ -13,7 +13,7 @@
 	document.head.append(script);
 	 
 	script.onload = () => {
-	    		console.log("script loaded...");
+	    	console.log("script loaded...");
 			scriptAppend = true;
 			customElements.define('custom-barchart', class custom_BarChart extends HTMLElement {
 	
@@ -63,7 +63,7 @@
 			}
 			if ("chHeight" in changedProperties) {
 				this.hght = changedProperties["chHeight"];
-				
+				console.log(chHeight);
 				
 			}
 			if(scriptAppend){
@@ -84,7 +84,7 @@
 			
 			this.wdth = _width;
 			this.hght = _height;
-			
+			//dispatching new custom event to capture width & height changes
 			this.dispatchEvent(new CustomEvent("propertiesChanged", {
 					detail: {
 						properties: {
