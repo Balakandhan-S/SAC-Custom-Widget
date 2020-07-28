@@ -63,7 +63,7 @@
 			}
 			if ("chHeight" in changedProperties) {
 				this.hght = changedProperties["chHeight"];
-				console.log(chHeight);
+				
 				
 			}
 			if(scriptAppend){
