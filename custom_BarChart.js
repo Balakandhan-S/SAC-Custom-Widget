@@ -115,7 +115,7 @@
 		redraw() {
 	  		
 			console.log("redraw...");  
-			
+			console.log(this._datajson);
 			var brclr = this._barcolor; 
 			var height = this.hght, width = this.wdth, margin = 70;
 			var svg = d3.select(this.shadowRoot).append("svg")
@@ -125,7 +125,7 @@
 			
     			var g = svg.append("g")
       			.attr("transform", "translate(" + margin/2 + "," + margin/2 + ")");
-
+			
 			var data = [{"year": 2011,"value": 45},{"year": 2012,"value": 47},{"year": 2013,"value": 52},{"year": 2014,"value": 70},{"year": 2015,"value": 75},{"year": 2016,"value": 78}];
 			console.log(data);
 			xScale.domain(data.map(function(d) {
